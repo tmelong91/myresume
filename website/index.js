@@ -56,12 +56,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-const counter = document.querySelector(".counter-number");
+cconst counter = document.querySelector(".counter-number");
 
 async function updateCounter() {
     try {
         // Fetch the counter data from the Lambda URL
         let response = await fetch("https://4cpo43kbreluxizyjdaskdndv40crqsg.lambda-url.us-east-1.on.aws/");
+        
+        // Log the HTTP status code
+        console.log("HTTP Status Code:", response.status);
         
         if (!response.ok) {
             throw new Error('Failed to fetch counter data');
@@ -91,4 +94,3 @@ async function updateCounter() {
 
 // Call the updateCounter function to fetch and display the initial counter value
 updateCounter();
-
