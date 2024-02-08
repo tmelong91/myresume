@@ -56,7 +56,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-cconst counter = document.querySelector(".counter-number");
+const counter = document.querySelector(".counter-number");
 
 async function updateCounter() {
     try {
