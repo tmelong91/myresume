@@ -57,27 +57,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 const counter = document.querySelector(".counter-number");
+
 async function updateCounter() {
     try {
-        let response = await fetch(
-            "https://4cpo43kbreluxizyjdaskdndv40crqsg.lambda-url.us-east-1.on.aws/"
-        );
+        // Fetch the counter data from the Lambda URL
+        let response = await fetch("https://4cpo43kbreluxizyjdaskdndv40crqsg.lambda-url.us-east-1.on.aws/");
+        
         if (!response.ok) {
             throw new Error('Failed to fetch counter data');
         }
+
+        // Parse the response as JSON
         let data = await response.json();
-        // Parse the fetched data as a number
-        let viewsCount = parseInt(data);
-        // Check if the parsing was successful
-        if (!isNaN(viewsCount)) {
-            counter.innerHTML = `👀 Views: ${viewsCount}`;
-        } else {
-            throw new Error('Counter value is not a number');
-        }
+
+        // Update the counter value on the webpage
+        counter.innerHTML = `👀 Views: ${data}`;
     } catch (error) {
         console.error('Error fetching counter data:', error);
         counter.innerHTML = 'Error fetching counter data';
     }
 }
 
+// Call the updateCounter function to fetch and display the initial counter value
 updateCounter();
