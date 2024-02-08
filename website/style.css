@@ -107,15 +107,16 @@ body{
     transform: translate(-50%, -50%);
 }
 
-.site-banner .banner-area .author .author-img{
+.site-banner .banner-area .author .author-img {
     width: 240px;
     height: 240px;
     border-radius: 50%;
     margin: auto;
     background: url(./assets/avatar-alt.png) no-repeat;
-    background-size: 110%;
-    background-position: 40% 0;
+    background-size: cover;
+    background-position: center;
 }
+
 
 .skill .bars p, .site-content .skill .bars span{
     line-height: 10px;
