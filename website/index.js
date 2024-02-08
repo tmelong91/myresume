@@ -69,9 +69,20 @@ async function updateCounter() {
 
         // Parse the response as text
         let data = await response.text();
+        
+        // Log the response data
+        console.log("Response data:", data);
 
-        // Update the counter value on the webpage
-        counter.innerHTML = `👀 Views: ${data}`;
+        // Convert the response data to a number
+        let count = parseInt(data);
+
+        if (!isNaN(count)) {
+            // Update the counter value on the webpage
+            counter.innerHTML = `👀 Views: ${count}`;
+        } else {
+            console.error('Invalid counter data:', data);
+            counter.innerHTML = 'Invalid counter data';
+        }
     } catch (error) {
         console.error('Error fetching counter data:', error);
         counter.innerHTML = 'Error fetching counter data';
@@ -80,3 +91,4 @@ async function updateCounter() {
 
 // Call the updateCounter function to fetch and display the initial counter value
 updateCounter();
+
