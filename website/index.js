@@ -67,8 +67,8 @@ async function updateCounter() {
             throw new Error('Failed to fetch counter data');
         }
 
-        // Parse the response as JSON
-        let data = await response.json();
+        // Parse the response as text
+        let data = await response.text();
 
         // Update the counter value on the webpage
         counter.innerHTML = `👀 Views: ${data}`;
